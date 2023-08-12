@@ -5,7 +5,6 @@ import cors from "cors";
 
 import dotenv from "dotenv";
 
-import { notFound, errorHandler } from "./middlewares";
 import router from "./api";
 
 dotenv.config();
@@ -19,7 +18,7 @@ app.use(express.json());
 
 app.get("/", (req: express.Request, res: express.Response) => {
   res.json({
-    message: "Wellcome to Mahesadev Whatsapp Gateway API",
+    message: "Wellcome to Mahesadev Media API Services",
     docs: "/api/v1/api-docs",
   });
 });
@@ -27,8 +26,5 @@ app.get("/", (req: express.Request, res: express.Response) => {
 // app.use(activityLogger);
 
 app.use("/api/v1", router);
-
-app.use(notFound);
-app.use(errorHandler);
 
 export default app;
