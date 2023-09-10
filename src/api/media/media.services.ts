@@ -1,5 +1,6 @@
 import { db } from "../../utils/db";
 import { Media } from "@prisma/client";
+import fs from "fs";
 
 const getAllMedia = async () => {
   const media = await db.media.findMany();
@@ -34,6 +35,18 @@ const deleteMedia = async (id: string) => {
       id,
     },
   });
+
+  const filepath = `public/assets/images/${media.name}`;
+
+  if (media) {
+    fs.unlink(filepath, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
+  }
+
   return media;
 };
 

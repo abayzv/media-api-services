@@ -69,7 +69,7 @@ router.post(
     }
 
     // change url to example http://localhost:5000/images/1619796160000.png
-    const url = `${mediaConfig.host}/assets/images/${file.filename}`;
+    const url = `/assets/images/${file.filename}`;
 
     const media = await uploadMedia({
       author: req.body.author,
